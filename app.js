@@ -9,6 +9,15 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use(express.json());
+
+app.post('/api/stuff', (req, res, next) => {
+  console.log(req.body);
+  res.status(201).json({
+    message: 'Objet créé !'
+  });
+});
+
 app.use('/api/stuff', (req, res, next) => {
   const stuff = [
     {
