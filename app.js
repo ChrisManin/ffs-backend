@@ -1,6 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 
+const path = require('path');
+
 const stuffRoutes = require('./routes/stuff');
 const userRoutes = require('./routes/user');
 
@@ -12,6 +14,8 @@ mongoose.connect('mongodb+srv://chris:ize7JevxfZdtHR2@cluster0.ikbu9.mongodb.net
   })
   .then(() => console.log('Connexion à MongoDB réussie !'))
   .catch(() => console.log('onnexion à MongoDB échouée !'));
+
+app.use('/images', express.static(path.join(__dirname, 'images')));
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
